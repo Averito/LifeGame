@@ -1,0 +1,51 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: -211px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 15px;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &.active {
+    left: 0;
+
+    .buttonArrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.title {
+  font-size: 24px;
+  color: black;
+}
+
+.buttonWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  position: absolute;
+  top: -15px;
+  right: -53px;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 8px 8px 3px 8px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    outline: none;
+    border: 1px solid transparent;
+  }
+}
+
+.buttonArrow {
+  transition: transform 0.3s ease;
+}

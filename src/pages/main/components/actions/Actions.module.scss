@@ -1,0 +1,22 @@
+.actions {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.button {
+  background-color: white;
+  padding: 13px 13px 7px 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:not(:last-of-type) {
+    border-right: 1px solid #323232;
+  }
+
+  &:hover {
+    background-color: #e1e1e1;
+  }
+}
