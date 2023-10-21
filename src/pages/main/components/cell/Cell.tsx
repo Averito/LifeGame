@@ -1,39 +1,44 @@
-import styles from './Cell.module.scss'
 import { CellProps } from '@pages/main/components/cell/Cell.types.ts'
 import { FC, useMemo } from 'react'
-import { toast } from 'react-toastify'
+import { Graphics } from '@pixi/react'
 
 export const Cell: FC<CellProps> = ({
 	cell,
 	boardWidth,
 	boardHeight,
-	updateCell,
-	stop
+	size
 }) => {
-	const width = useMemo(() => (boardWidth * 20) / boardWidth - 1, [boardWidth])
-	const height = useMemo(
-		() => (boardHeight * 20) / boardHeight - 1,
-		[boardHeight]
-	)
 	const backgroundColor = useMemo(
 		() => (cell.isLife ? cell.color : '#404040'),
 		[cell]
 	)
 
-	const onClickCell = () => {
-		if (!stop) return toast.error('Требуется остановить игру!')
-		updateCell({
-			...cell,
-			isLife: !cell.isLife
-		})
+	// const onClickCell = () => {
+	// 	if (!stop) return toast.error('Требуется остановить игру!')
+	// 	updateCell({
+	// 		...cell,
+	// 		isLife: !cell.isLife
+	// 	})
+	// }
+
+	const drawGraphics = (g: any) => {
+		const cellX = Math.floor(cell.id % boardWidth) * size
+		const cellY = Math.ceil(cell.id / boardHeight) * size
+
+		g.clear()
+		g.beginFill(backgroundColor)
+		g.lineStyle(1, '#323232', 1)
+		g.moveTo(cellX, cellY)
+		g.lineTo(cellX + size, cellY)
+		g.lineTo(cellX + size, cellY + size)
+		g.lineTo(cellX, cellY + size)
+		g.lineTo(cellX, cellY)
+		g.endFill()
+
+		g.onclick = () => {
+			console.log('click')
+		}
 	}
 
-	return (
-		<div
-			className={styles.cell}
-			data-id={cell.id}
-			style={{ backgroundColor, width, height }}
-			onClick={onClickCell}
-		/>
-	)
+	return <Graphics draw={drawGraphics} />
 }

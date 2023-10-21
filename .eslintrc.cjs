@@ -17,6 +17,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     'react-hooks/exhaustive-deps': 0,
+    '@typescript-eslint/no-explicit-any': 0,
     "prettier/prettier": [
       "warn",
       {

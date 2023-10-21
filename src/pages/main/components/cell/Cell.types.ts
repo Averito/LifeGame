@@ -4,6 +4,7 @@ export interface CellProps {
 	boardHeight: number
 	stop: boolean
 	updateCell: (cell: ICell) => void
+	size: number
 }
 
 export interface ICell {

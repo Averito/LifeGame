@@ -15,20 +15,6 @@ export const Options: FC<OptionsProps> = ({ accept, options }) => {
 		setActive(prevState => !prevState)
 	}
 
-	const onChangeWidth = (width: string) => {
-		setNewOptions(prevState => ({
-			...prevState,
-			width: parseInt(width) || 30
-		}))
-	}
-
-	const onChangeHeight = (height: string) => {
-		setNewOptions(prevState => ({
-			...prevState,
-			height: parseInt(height) || 30
-		}))
-	}
-
 	const onChangeSpeed = (speed: string) => {
 		setNewOptions(prevState => ({
 			...prevState,
@@ -57,20 +43,6 @@ export const Options: FC<OptionsProps> = ({ accept, options }) => {
 
 			<h1 className={styles.title}>Настройки</h1>
 
-			<AppInput
-				type='number'
-				placeholder='Ширина'
-				label='Ширина'
-				value={newOptions.width.toString()}
-				onChange={onChangeWidth}
-			/>
-			<AppInput
-				type='number'
-				placeholder='Высота'
-				label='Высота'
-				value={newOptions.height.toString()}
-				onChange={onChangeHeight}
-			/>
 			<AppInput
 				type='number'
 				placeholder='Скорость (мс)'
